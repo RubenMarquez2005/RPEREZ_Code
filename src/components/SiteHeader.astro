@@ -1,0 +1,61 @@
+---
+import { ArrowUpRight, Menu, X } from '@lucide/astro';
+
+const links = [
+	{ href: '/', label: 'Inicio' },
+	{ href: '/servicios', label: 'Servicios' },
+	{ href: '/proyectos', label: 'Proyectos' },
+	{ href: '/sobre-mi', label: 'Sobre mí' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="site-header">
+	<div class="header-inner section-shell mx-auto w-full max-w-[1280px] px-5 md:px-8 xl:px-10">
+		<a class="brand" href="/" aria-label="Rubén Pérez, inicio">
+			<img class="brand-logo" src="/logo-rperez.svg" alt="" aria-hidden="true" />
+			<span class="brand-copy">
+				<span class="brand-name">Rubén Pérez</span>
+				<span class="brand-role">Full-stack developer</span>
+			</span>
+		</a>
+		<nav class="desktop-nav" aria-label="Navegación principal">
+			{links.map((link) => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}</a>)}
+		</nav>
+		<div class="header-actions">
+			<a class="header-cta" href="/contacto" aria-current={currentPath === '/contacto' ? 'page' : undefined}>Hablemos de tu proyecto <ArrowUpRight size={15} stroke-width={1.8} aria-hidden="true" /></a>
+			<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+				<Menu class="menu-icon" size={19} aria-hidden="true" /><X class="close-icon" size={19} aria-hidden="true" />
+			</button>
+		</div>
+	</div>
+	<nav class="mobile-nav" id="mobile-menu" aria-label="Navegación móvil">
+		{links.map((link) => <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>{link.label}</a>)}
+		<a href="/contacto" aria-current={currentPath === '/contacto' ? 'page' : undefined}>Hablemos de tu proyecto</a>
+	</nav>
+</header>
+
+<script>
+	const setupMenu = () => {
+		const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+		const menu = document.querySelector<HTMLElement>('#mobile-menu');
+		if (!toggle || !menu || toggle.dataset.ready) return;
+		toggle.dataset.ready = 'true';
+		toggle.addEventListener('click', () => {
+			const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+			toggle.setAttribute('aria-expanded', String(!isOpen));
+			toggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+			menu.classList.toggle('is-open', !isOpen);
+			document.body.classList.toggle('menu-open', !isOpen);
+		});
+		menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+			toggle.setAttribute('aria-expanded', 'false');
+			toggle.setAttribute('aria-label', 'Abrir menú');
+			menu.classList.remove('is-open');
+			document.body.classList.remove('menu-open');
+		}));
+	};
+	setupMenu();
+	document.addEventListener('astro:page-load', setupMenu);
+</script>

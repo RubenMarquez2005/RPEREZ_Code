@@ -1,0 +1,33 @@
+---
+import { ArrowUpRight, Clock3, MessageCircleMore } from '@lucide/astro';
+import ContactForm from '../components/ContactForm.astro';
+import PageIntro from '../components/PageIntro.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contacto y consultas" description="Cuéntame qué web o aplicación necesitas y recibe una propuesta a medida.">
+	<SiteHeader />
+	<main id="contenido">
+		<PageIntro eyebrow="Contacto" title="Cuéntame qué necesitas. Lo vemos juntos." description="No hace falta tenerlo todo definido. Explícame la idea o el problema y te responderé con preguntas, orientación y los siguientes pasos." />
+		<section class="section-shell page-section contact-layout">
+			<aside class="contact-aside" data-reveal>
+				<span class="section-kicker">Primer paso, sin compromiso</span>
+				<h2>Una conversación clara vale más que una tarifa genérica.</h2>
+				<p>Cuéntame qué quieres conseguir. Revisaremos el alcance antes de hablar de precio y te enviaré una propuesta adecuada al proyecto.</p>
+				<div class="contact-points">
+					<span class="contact-point"><MessageCircleMore size={16} aria-hidden="true" /> Trato directo contigo</span>
+					<span class="contact-point"><Clock3 size={16} aria-hidden="true" /> Sin pagos ni carrito</span>
+				</div>
+				<a class="service-card-link" href="/servicios">Ver servicios <ArrowUpRight size={14} aria-hidden="true" /></a>
+			</aside>
+			<ContactForm />
+		</section>
+	</main>
+	<SiteFooter />
+</BaseLayout>
+
+<script>
+	import '../scripts/animations';
+</script>

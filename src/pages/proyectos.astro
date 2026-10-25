@@ -1,0 +1,49 @@
+---
+import ProjectCard from '../components/ProjectCard.astro';
+import PageIntro from '../components/PageIntro.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+	{
+		index: '01', category: 'Concepto personal', title: 'Forma Objects',
+		description: 'Dirección visual para una tienda de objetos de diseño: catálogo editorial, fichas claras y compra sencilla.',
+		image: 'https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=1200&q=85',
+		imageAlt: 'Objeto de iluminación de diseño en un espacio cuidado', technologies: ['E-commerce', 'Diseño UI', 'Astro'],
+	},
+	{
+		index: '02', category: 'Concepto personal', title: 'Northstar',
+		description: 'Una interfaz de análisis que organiza información compleja para ayudar a detectar lo importante.',
+		image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85',
+		imageAlt: 'Panel de análisis de datos y gráficos', technologies: ['Dashboard', 'APIs', 'Java'],
+	},
+	{
+		index: '03', category: 'Concepto personal', title: 'Common Ground',
+		description: 'Una plataforma de comunidad para descubrir actividades, compartir intereses y organizar encuentros.',
+		image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=85',
+		imageAlt: 'Grupo compartiendo una comida alrededor de una mesa', technologies: ['Plataforma', 'FastAPI', 'MongoDB'],
+	},
+	{
+		index: '04', category: 'Concepto personal', title: 'Field Notes',
+		description: 'Una experiencia sencilla para registrar ideas y observaciones desde cualquier dispositivo.',
+		image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=85',
+		imageAlt: 'Cuaderno abierto sobre una mesa', technologies: ['Aplicación', 'Flutter', 'Python'],
+	},
+];
+---
+
+<BaseLayout title="Proyectos y exploraciones" description="Exploraciones de producto, interfaces y soluciones digitales de Rubén Pérez.">
+	<SiteHeader />
+	<main id="contenido">
+		<PageIntro eyebrow="Proyectos" title="Ideas digitales, llevadas a una primera forma." description="Estas exploraciones conceptuales muestran distintos tipos de producto que puedo diseñar y desarrollar. No son encargos de clientes; los casos reales se añadirán aquí con su contexto y resultados." />
+		<section class="section-shell page-section" aria-label="Exploraciones conceptuales">
+			<div class="project-grid">{projects.map((project) => <ProjectCard {...project} />)}</div>
+		</section>
+	</main>
+	<SiteFooter />
+</BaseLayout>
+
+<script>
+	import '../scripts/animations';
+</script>

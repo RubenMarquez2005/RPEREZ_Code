@@ -1,0 +1,30 @@
+---
+interface Props {
+	index: string;
+	category: string;
+	title: string;
+	description: string;
+	image: string;
+	imageAlt: string;
+	technologies: string[];
+}
+
+const { index, category, title, description, image, imageAlt, technologies } = Astro.props;
+---
+
+<article class="project-card" data-reveal data-tilt>
+	<a class="project-image-wrap" href={`/contacto?servicio=${encodeURIComponent('Otro proyecto')}&proyecto=${encodeURIComponent(title)}`} aria-label={`Consultar sobre ${title}`}>
+		<img src={image} alt={imageAlt} loading="lazy" />
+		<span class="project-image-meta">{category}</span>
+	</a>
+	<div class="project-info">
+		<div>
+			<h3 class="project-title">{title}</h3>
+			<p class="project-description">{description}</p>
+			<div class="project-tags" aria-label="Tecnologías">
+				{technologies.map((technology) => <span>{technology}</span>)}
+			</div>
+		</div>
+		<span class="project-index" aria-hidden="true">{index}</span>
+	</div>
+</article>

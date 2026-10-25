@@ -1,0 +1,42 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import PageIntro from '../components/PageIntro.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sobre mí" description="Conoce a Rubén Márquez Pérez: desarrollador de software con formación en desarrollo multiplataforma y experiencia práctica en inteligencia artificial.">
+	<SiteHeader />
+	<main id="contenido">
+		<PageIntro eyebrow="Sobre mí · Rubén Márquez Pérez" title="Me gusta crear tecnología que sirve para algo concreto." description="He estudiado Desarrollo de Aplicaciones Multiplataforma y disfruto llevando ideas desde el código hasta una experiencia que alguien pueda usar. Ya he trabajado con modelos de inteligencia artificial y chatbots; ahora me interesa aplicarlos a la web con sentido." />
+		<section class="section-shell page-section about-grid">
+			<figure class="about-image" data-reveal>
+				<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85" alt="Espacio de trabajo para diseñar y desarrollar software" loading="lazy" />
+			</figure>
+			<div class="about-copy" data-reveal>
+				<span class="section-kicker">Aprender haciendo</span>
+				<h2>Del desarrollo de sistemas a explorar la inteligencia artificial.</h2>
+				<p>Soy Rubén Márquez Pérez. Mi camino empezó con Sistemas Microinformáticos y Redes y continuó con el Grado Superior en Desarrollo de Aplicaciones Multiplataforma, que completé entre 2024 y 2026. Esa base me permite entender tanto lo que ocurre detrás de una aplicación como la experiencia que vive quien la utiliza.</p>
+				<p>Durante una experiencia en empresa vinculada al ciclo superior, desarrollé modelos de inteligencia artificial y realicé pruebas con ellos, incluidos chatbots. Fue ahí donde empecé a interesarme especialmente por una pregunta: ¿cómo puede la IA resolver una necesidad real dentro de una web o aplicación?</p>
+				<p>Ahora estoy ampliando mi formación con cursos de inteligencia artificial aplicada al desarrollo web. Me interesa conectar modelos y chatbots con páginas y aplicaciones para resolver tareas concretas, con interfaces fáciles de usar y sin incorporar IA solo por tendencia.</p>
+				<div class="about-principles">
+					<div class="about-principle"><span>01</span><div><strong>IA con propósito</strong><p>Modelos y chatbots probados para entender cuándo aportan valor de verdad.</p></div></div>
+					<div class="about-principle"><span>02</span><div><strong>Base full-stack</strong><p>Desarrollo multiplataforma, web, bases de datos e integración de servicios.</p></div></div>
+					<div class="about-principle"><span>03</span><div><strong>La persona primero</strong><p>Mi experiencia de cara al público me enseñó a escuchar, adaptarme y resolver.</p></div></div>
+				</div>
+				<div class="about-education" aria-label="Formación">
+					<div class="about-education-item"><span>2024–2026 · Finalizado</span><strong>Grado Superior en Desarrollo de Aplicaciones Multiplataforma</strong><small>Campus FP Getafe</small></div>
+					<div class="about-education-item"><span>2022–2024</span><strong>Grado Medio en Sistemas Microinformáticos y Redes</strong><small>Campus FP Getafe</small></div>
+				</div>
+				<div class="tech-line" aria-label="Tecnologías y herramientas"><span>Java</span><span>Kotlin</span><span>Python</span><span>JavaScript</span><span>C# / .NET</span><span>Astro</span><span>Bootstrap</span><span>Spring Boot</span><span>MySQL</span><span>MongoDB</span><span>PostgreSQL</span></div>
+				<a class="button-primary mt-7" href="/contacto">Hablemos de tu proyecto <ArrowUpRight size={15} aria-hidden="true" /></a>
+			</div>
+		</section>
+	</main>
+	<SiteFooter />
+</BaseLayout>
+
+<script>
+	import '../scripts/animations';
+</script>

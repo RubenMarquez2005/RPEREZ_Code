@@ -1,0 +1,65 @@
+---
+import { ArrowUpRight, Check } from '@lucide/astro';
+import PageIntro from '../components/PageIntro.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+	{
+		id: 'web', index: '01', title: 'Web para negocio',
+		copy: 'Una presencia digital profesional para explicar con claridad qué haces, generar confianza y convertir visitas en conversaciones.',
+		items: ['Diseño adaptable a móvil', 'Estructura y contenido claros', 'Optimización de rendimiento'],
+		query: 'Web para negocio',
+	},
+	{
+		id: 'portfolio', index: '02', title: 'Portfolio web',
+		copy: 'Una página personal para presentar tu trabajo, mostrar quién eres y facilitar que clientes o empresas contacten contigo.',
+		items: ['Diseño alineado con tu perfil', 'Proyectos y experiencia bien presentados', 'Contacto directo y adaptable a móvil'],
+		query: 'Portfolio web',
+	},
+	{
+		id: 'aplicaciones', index: '03', title: 'Aplicaciones web a medida',
+		copy: 'Plataformas, paneles y herramientas internas creadas alrededor de tus procesos, no al revés.',
+		items: ['Análisis de necesidades', 'Interfaz y lógica a medida', 'Integración con tus sistemas'],
+		query: 'Aplicación web a medida',
+	},
+	{
+		id: 'ecommerce', index: '04', title: 'Tiendas online',
+		copy: 'Experiencias de compra simples y coherentes con tu marca, preparadas para administrar productos y pedidos.',
+		items: ['Catálogo y páginas de producto', 'Flujo de compra', 'Herramientas de gestión'],
+		query: 'Tienda online',
+	},
+	{
+		id: 'evolucion', index: '05', title: 'Mejoras e integraciones',
+		copy: 'Evoluciona una web o aplicación existente, automatiza tareas y conecta servicios que hoy trabajan por separado.',
+		items: ['Nuevas funcionalidades', 'APIs e integraciones', 'Mantenimiento y optimización'],
+		query: 'Mejora o mantenimiento',
+	},
+];
+---
+
+<BaseLayout title="Servicios de desarrollo web" description="Desarrollo de webs para negocios, aplicaciones a medida, tiendas online e integraciones.">
+	<SiteHeader />
+	<main id="contenido">
+		<PageIntro eyebrow="Servicios" title="La solución correcta empieza por entender lo que necesitas." description="Trabajo contigo para convertir una necesidad concreta en una web o aplicación útil. Sin paquetes rígidos ni compras automáticas: primero hablamos, después definimos alcance y propuesta." />
+		<section class="section-shell page-section" aria-label="Servicios disponibles">
+			<div class="service-list">
+				{services.map((service) => (
+					<article class="service-detail" id={service.id} data-reveal>
+						<span class="service-detail-index">{service.index}</span>
+						<div><h2>{service.title}</h2><p>{service.copy}</p></div>
+						<ul>{service.items.map((item) => <li><Check size={14} aria-hidden="true" />{item}</li>)}</ul>
+						<a class="button-secondary" href={`/contacto?servicio=${encodeURIComponent(service.query)}`}>Consultar <ArrowUpRight size={14} aria-hidden="true" /></a>
+					</article>
+				))}
+			</div>
+			<p class="note-line">Cada proyecto se presupuesta según su alcance. Las tarifas detalladas estarán disponibles próximamente; puedes escribirme para consultar una propuesta.</p>
+		</section>
+	</main>
+	<SiteFooter />
+</BaseLayout>
+
+<script>
+	import '../scripts/animations';
+</script>

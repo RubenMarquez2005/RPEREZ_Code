@@ -1,0 +1,105 @@
+---
+import { ArrowRight, ArrowUpRight, Check } from '@lucide/astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Desarrollo web y aplicaciones a medida">
+	<SiteHeader />
+	<main id="contenido">
+		<section class="home-hero section-shell" aria-labelledby="hero-title">
+			<div class="hero-copy">
+				<p class="eyebrow" data-hero-item>Desarrollo web y software a medida</p>
+				<h1 class="hero-title" id="hero-title" data-hero-item>Tu idea merece una web que <span>trabaje por ti.</span></h1>
+				<p class="hero-description" data-hero-item>Diseño y desarrollo páginas web y aplicaciones pensadas para tu negocio: fáciles de usar, rápidas y preparadas para crecer contigo.</p>
+				<div class="hero-actions" data-hero-item>
+					<a class="button-primary" href="/contacto?servicio=Web%20para%20negocio" data-service-link>Cuéntame tu idea <ArrowUpRight size={16} aria-hidden="true" /></a>
+					<a class="button-secondary" href="/servicios">Ver servicios <ArrowRight size={15} aria-hidden="true" /></a>
+				</div>
+				<fieldset class="project-choice" data-service-selector data-hero-item>
+					<legend>¿Qué quieres crear?</legend>
+					<div class="project-choice-options">
+						<label class="project-choice-option"><input type="radio" name="project-service" value="Web para negocio" checked /><span>Web de negocio</span></label>
+						<label class="project-choice-option"><input type="radio" name="project-service" value="Portfolio web" /><span>Portfolio web</span></label>
+						<label class="project-choice-option"><input type="radio" name="project-service" value="Aplicación web a medida" /><span>Aplicación</span></label>
+						<label class="project-choice-option"><input type="radio" name="project-service" value="Otro proyecto" /><span>Aún no lo sé</span></label>
+					</div>
+				</fieldset>
+				<div class="hero-proof" data-hero-item>
+					<span><Check size={14} aria-hidden="true" /> Trato directo</span>
+					<span><Check size={14} aria-hidden="true" /> Soluciones a medida</span>
+					<span><Check size={14} aria-hidden="true" /> Sin compromiso inicial</span>
+				</div>
+			</div>
+			<figure class="hero-image" data-hero-item data-hero-media>
+				<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=90" alt="Espacio de trabajo preparado para diseñar y desarrollar productos digitales" fetchpriority="high" />
+				<div class="hero-float-card" aria-label="Diseño y desarrollo de productos digitales">
+					<span class="hero-float-kicker">Del concepto a la web</span>
+					<p class="hero-float-title">Una idea clara.<br />Una experiencia útil.</p>
+					<div class="hero-float-meta"><span>Diseño</span><span>Desarrollo</span><span>Entrega</span></div>
+				</div>
+				<figcaption class="image-label"><span>Tu próximo proyecto, bien construido</span><span>RP / 01</span></figcaption>
+			</figure>
+		</section>
+
+		<section class="home-services page-section" aria-labelledby="home-services-title">
+			<div class="section-shell">
+				<div class="section-head" data-reveal>
+					<div><span class="section-kicker">Qué puedo hacer por tu negocio</span><h2 class="section-title" id="home-services-title">De una buena idea a una solución que funciona.</h2></div>
+					<a class="service-card-link" href="/servicios">Explorar servicios <ArrowRight size={15} aria-hidden="true" /></a>
+				</div>
+				<div class="service-grid">
+					<a class="service-card" href="/servicios#web" data-reveal><span class="service-card-number">01 / PRESENCIA DIGITAL</span><h3>Web para tu negocio</h3><p>Una web profesional que explica lo que haces y facilita que te contacten.</p><span class="service-card-link">Ver servicio <ArrowRight size={14} aria-hidden="true" /></span></a>
+					<a class="service-card" href="/servicios#portfolio" data-reveal><span class="service-card-number">02 / MARCA PERSONAL</span><h3>Portfolio web</h3><p>Una web para presentar tu trabajo, explicar tu valor y recibir nuevas oportunidades.</p><span class="service-card-link">Ver servicio <ArrowRight size={14} aria-hidden="true" /></span></a>
+					<a class="service-card" href="/servicios#aplicaciones" data-reveal><span class="service-card-number">03 / PRODUCTO DIGITAL</span><h3>Aplicaciones web</h3><p>Herramientas y plataformas hechas a medida para resolver procesos reales.</p><span class="service-card-link">Ver servicio <ArrowRight size={14} aria-hidden="true" /></span></a>
+					<a class="service-card" href="/servicios#evolucion" data-reveal><span class="service-card-number">04 / EVOLUCIÓN</span><h3>Mejoras e integraciones</h3><p>Optimización, nuevas funcionalidades y conexiones entre tus sistemas.</p><span class="service-card-link">Ver servicio <ArrowRight size={14} aria-hidden="true" /></span></a>
+				</div>
+			</div>
+		</section>
+
+		<section class="home-about page-section" aria-labelledby="about-preview-title">
+			<div class="section-shell">
+				<div class="container-fluid">
+					<div class="row about-preview-row">
+						<div class="col-12 col-lg-4" data-reveal><div class="about-preview-mark"><strong>RP.</strong><span>Desarrollo full-stack</span></div></div>
+						<div class="col-12 col-lg-8 about-preview-copy" data-reveal>
+							<span class="section-kicker">Un poco sobre mí</span>
+							<h2 id="about-preview-title">Soy Rubén. Me implico desde la primera conversación hasta el último detalle.</h2>
+							<p>He completado el Grado Superior en Desarrollo de Aplicaciones Multiplataforma y he creado y probado modelos de IA y chatbots. Ahora quiero llevar esa experiencia a webs y aplicaciones que resuelvan problemas reales.</p>
+							<a class="button-secondary" href="/sobre-mi">Saber más sobre mí <ArrowRight size={15} aria-hidden="true" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="page-section" aria-labelledby="approach-title">
+			<div class="section-shell approach-row">
+				<div data-reveal><span class="section-kicker">Una forma de trabajar clara</span><h2 class="section-title" id="approach-title">Sabes qué pasa en cada etapa.</h2><p class="section-copy">Primero hablamos de lo que necesitas. Después definimos alcance, tiempos y una propuesta clara antes de empezar.</p></div>
+				<div class="approach-steps">
+					<div class="approach-step" data-reveal><span>01 / Escuchar</span><h3>Entiendo el objetivo</h3><p>Hablamos de tu negocio, tus usuarios y lo que quieres resolver.</p></div>
+					<div class="approach-step" data-reveal><span>02 / Acordar</span><h3>Definimos el plan</h3><p>Recibes una propuesta con alcance y prioridades, sin sorpresas.</p></div>
+					<div class="approach-step" data-reveal><span>03 / Construir</span><h3>Lo llevamos a producción</h3><p>Desarrollo, revisiones contigo y entrega lista para usar.</p></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="page-section" aria-label="Contacto">
+			<div class="section-shell cta-band" data-reveal><div><h2>¿Tienes algo en mente?</h2><p>Cuéntame qué necesitas y vemos juntos cuál es el siguiente paso.</p></div><a class="button-primary" href="/contacto">Empezar conversación <ArrowUpRight size={16} aria-hidden="true" /></a></div>
+		</section>
+	</main>
+	<SiteFooter />
+</BaseLayout>
+
+<script>
+	import '../scripts/animations';
+
+	const serviceSelector = document.querySelector<HTMLElement>('[data-service-selector]');
+	const serviceLink = document.querySelector<HTMLAnchorElement>('[data-service-link]');
+	serviceSelector?.addEventListener('change', (event) => {
+		const target = event.target;
+		if (!(target instanceof HTMLInputElement) || !serviceLink) return;
+		serviceLink.href = `/contacto?servicio=${encodeURIComponent(target.value)}`;
+	});
+</script>

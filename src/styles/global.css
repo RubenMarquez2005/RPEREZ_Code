@@ -1,0 +1,13 @@
+@import "bootstrap/dist/css/bootstrap-grid.min.css";
+@import "tailwindcss";
+@import "./site.css";
+
+@theme {
+	--color-ink: #0d0d0f;
+	--color-graphite: #19191d;
+	--color-paper: #eae7e5;
+	--color-muted: #a09b99;
+	--color-gold: #c5aa6a;
+	--font-sans: "Manrope", sans-serif;
+	--font-display: "Space Grotesk", sans-serif;
+}

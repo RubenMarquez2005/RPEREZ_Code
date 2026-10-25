@@ -1,0 +1,74 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+
+const email = 'cambia-este-correo@example.com';
+---
+
+<form class="contact-form" data-contact-form data-contact-email={email}>
+	<div class="field">
+		<label for="contact-name">Tu nombre</label>
+		<input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Cómo te llamas" required />
+	</div>
+	<div class="field">
+		<label for="contact-email">Tu correo</label>
+		<input id="contact-email" name="email" type="email" autocomplete="email" placeholder="nombre@empresa.com" required />
+	</div>
+	<div class="field field-full">
+		<label for="contact-service">¿En qué puedo ayudarte?</label>
+		<select id="contact-service" name="service" required>
+			<option value="" disabled selected>Selecciona un servicio</option>
+			<option value="Web para negocio">Web para negocio</option>
+			<option value="Portfolio web">Portfolio web</option>
+			<option value="Aplicación web a medida">Aplicación web a medida</option>
+			<option value="Tienda online">Tienda online</option>
+			<option value="Mejora o mantenimiento">Mejora o mantenimiento</option>
+			<option value="Consulta sobre tarifas">Consulta sobre tarifas</option>
+			<option value="Otro proyecto">Otro proyecto</option>
+		</select>
+	</div>
+	<div class="field field-full">
+		<label for="contact-message">Cuéntame qué tienes en mente</label>
+		<textarea id="contact-message" name="message" placeholder="¿Qué necesitas, para quién es y qué te gustaría conseguir?" required></textarea>
+	</div>
+	<button class="button-primary form-submit" type="submit">Enviar consulta <ArrowUpRight size={16} aria-hidden="true" /></button>
+	<p class="form-status" data-form-status aria-live="polite"></p>
+</form>
+
+<script>
+	const setupContactForm = () => {
+		const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+		const status = document.querySelector<HTMLElement>('[data-form-status]');
+		const service = form?.elements.namedItem('service');
+		if (!form || !status || !(service instanceof HTMLSelectElement) || form.dataset.ready) return;
+		form.dataset.ready = 'true';
+
+		const requestedService = new URLSearchParams(window.location.search).get('servicio');
+		if (requestedService && Array.from(service.options).some((option) => option.value === requestedService)) {
+			service.value = requestedService;
+		}
+		const project = new URLSearchParams(window.location.search).get('proyecto');
+		const message = form.elements.namedItem('message');
+		if (project && message instanceof HTMLTextAreaElement) {
+			message.value = `Me interesa consultar sobre el proyecto ${project}.`;
+		}
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			if (!form.reportValidity()) return;
+			const recipient = form.dataset.contactEmail;
+			if (!recipient || recipient === 'cambia-este-correo@example.com') {
+				status.textContent = 'El formulario está listo. Configura tu correo de contacto antes de publicar.';
+				return;
+			}
+			const values = new FormData(form);
+			const name = String(values.get('name') ?? '');
+			const subject = encodeURIComponent(`Consulta web de ${name}: ${values.get('service')}`);
+			const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${values.get('email')}\nServicio: ${values.get('service')}\n\n${values.get('message')}`);
+			window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+			status.textContent = 'Abriendo tu aplicación de correo para preparar el mensaje.';
+		});
+	};
+
+	setupContactForm();
+	document.addEventListener('astro:page-load', setupContactForm);
+</script>
